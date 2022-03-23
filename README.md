@@ -103,6 +103,7 @@ Things you may want to cover:
 * ...
 <<<<<<< HEAD
 >>>>>>> parent of 403b8d3 (データベース設計)
+<<<<<<< Updated upstream
 =======
 - belongs_to :item
 
@@ -110,4 +111,6 @@ Things you may want to cover:
 >>>>>>> parent of 28f2196 (データベース設計　修正その3)
 =======
 >>>>>>> parent of 403b8d3 (データベース設計)
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
