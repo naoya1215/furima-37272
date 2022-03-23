@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> Stashed changes
 ## users テーブル
 
 | Column             | Type   | Options                    |
@@ -67,3 +72,42 @@
 
 
 - belongs_to :order
+<<<<<<< Updated upstream
+=======
+=======
+=======
+>>>>>>> parent of 403b8d3 (データベース設計)
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+<<<<<<< HEAD
+>>>>>>> parent of 403b8d3 (データベース設計)
+=======
+- belongs_to :item
+
+
+>>>>>>> parent of 28f2196 (データベース設計　修正その3)
+=======
+>>>>>>> parent of 403b8d3 (データベース設計)
+>>>>>>> Stashed changes
