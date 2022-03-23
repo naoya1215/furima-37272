@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :items
-- has_many :orders
+- has_many :records
 
 
 ## items テーブル
@@ -36,21 +36,21 @@
 ### Association
 
 - belongs_to :user
-- has_one :order
+- has_one :destination
+- has_one :record
 
 
-## orders テーブル
+## records テーブル
 
 | Column             | Type      | Options     |
 | ------             | ------    | ----------- |
 | user               | references| null: false, foreign_key: true|
-| item               | references| null: false, foreign_key: true|
+| item               | references | null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- has_one :destination
 
 ## destinations テーブル
 
@@ -62,10 +62,12 @@
 | address            | string    | null: false |
 | building           | string    |             |
 | phone              | string    | null: false |
-| order              | references| null: false, foreign_key: true|
+| user               | references | null: false, foreign_key: true|
+| record             | references | null: false, foreign_key: true|
 
 ### Association
 
+<<<<<<< HEAD
 
 - belongs_to :order
 =======
@@ -94,3 +96,8 @@ Things you may want to cover:
 
 * ...
 >>>>>>> parent of 403b8d3 (データベース設計)
+=======
+- belongs_to :item
+
+
+>>>>>>> parent of 28f2196 (データベース設計　修正その3)
