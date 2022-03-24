@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## users テーブル
 
 | Column             | Type   | Options                    |
@@ -71,6 +72,8 @@
 
 - belongs_to :order
 =======
+=======
+>>>>>>> parent of 403b8d3 (データベース設計)
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -95,9 +98,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+<<<<<<< HEAD
 >>>>>>> parent of 403b8d3 (データベース設計)
 =======
 - belongs_to :item
 
 
 >>>>>>> parent of 28f2196 (データベース設計　修正その3)
+=======
+>>>>>>> parent of 403b8d3 (データベース設計)
