@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 ## users テーブル
 
 | Column             | Type   | Options                    |
@@ -16,7 +14,7 @@
 ### Association
 
 - has_many :items
-- has_many :records
+- has_many :orders
 
 
 ## items テーブル
@@ -37,21 +35,20 @@
 ### Association
 
 - belongs_to :user
-- has_one :destination
-- has_one :record
+- has_one :order
 
 
-## records テーブル
+## orders テーブル
 
 | Column             | Type      | Options     |
-| ------             | ------    | ----------- |
 | user               | references| null: false, foreign_key: true|
-| item               | references | null: false, foreign_key: true|
+| item               | references| null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one :destination
 
 ## destinations テーブル
 
@@ -63,47 +60,9 @@
 | address            | string    | null: false |
 | building           | string    |             |
 | phone              | string    | null: false |
-| user               | references | null: false, foreign_key: true|
-| record             | references | null: false, foreign_key: true|
+| order              | references| null: false, foreign_key: true|
 
 ### Association
 
-<<<<<<< HEAD
 
 - belongs_to :order
-=======
-=======
->>>>>>> parent of 403b8d3 (データベース設計)
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-<<<<<<< HEAD
->>>>>>> parent of 403b8d3 (データベース設計)
-=======
-- belongs_to :item
-
-
->>>>>>> parent of 28f2196 (データベース設計　修正その3)
-=======
->>>>>>> parent of 403b8d3 (データベース設計)
