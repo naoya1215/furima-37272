@@ -16,9 +16,8 @@ class User < ApplicationRecord
   has_many :items
   has_many :orders
 
-
   # パスワードは、半角英数字混合での入力が必須であること
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX
   # 苗字は、全角ひらがな、全角カタカナ、漢字
   LAST_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
