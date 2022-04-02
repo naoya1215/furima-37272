@@ -4,7 +4,7 @@ FactoryBot.define do
     # これはランダムに値を生成してくれる
     nickname                { Faker::Name.initials }
     email                   { Faker::Internet.free_email }
-    password                { Faker::Internet.password(min_length: 6) }
+    password                { '1a' + Faker::Internet.password(min_length: 4) }
     password_confirmation   { password }
     first_name              { '柳沢' }
     last_name               { '直也' }
