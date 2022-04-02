@@ -20,10 +20,10 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX
   # 苗字は、全角ひらがな、全角カタカナ、漢字
-  LAST_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
+  LAST_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
   validates_format_of :last_name, with: LAST_NAME_REGEX
   # 名前は、全角ひらがな、全角カタカナ、漢字
-  FIRST_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
+  FIRST_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
   validates_format_of :first_name, with: FIRST_NAME_REGEX
   # ミョウジは、全角カタカナ
   LAST_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
