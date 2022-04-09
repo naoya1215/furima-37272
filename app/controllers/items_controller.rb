@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
-  def index #表示
+  # exceptを使用(index, showは除きユーザーがログインしているかを確認する)
+  before_action :authenticate_user!, except: [:index, :show]
+
+  def index #トップ画面の表示
+    @items = Item.all
   end
 
   def new #新規作成
