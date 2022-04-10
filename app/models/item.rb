@@ -12,7 +12,10 @@ class Item < ApplicationRecord
   belongs_to :shipping
 
   # 空の投稿を保存できないようにする
-  validates :name, :explanation, :image, presence: true
+  validates :name, presence: true, length: { maximum: 40 }
+  validates :explanation, presence: true, length: { maximum: 1000 }
+  validates :image, presence: true
+  # 価格は、￥300〜9,999,999の時に保存が出来る
   validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   # ジャンルの選択が「---」の時は保存できないようにする
   validates :category_id, :status_id, :responsibility_id, :prefecture_id, :shipping_id, numericality: { other_than: 1, message: "can't be blank" } 
