@@ -29,31 +29,70 @@ RSpec.describe Item, type: :model do
     end
     context "商品登録ができない場合" do
       it "image(画像)が空だと登録できない" do
+        @item.image = nil #画像の場合はnilを使用する
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
-    #   it "name(商品名)が空だと登録できない" do
-    #   end
-    #   it "explanation(商品説明)が空だと登録できない" do
-    #   end     
-    #   it "category_id(カテゴリ)が空だと登録できない" do
-    #   end
-    #   it "status_id(商品状態)が空だと登録できない" do
-    #   end     
-    #   it "responsibility_id(配送料の負担)が空だと登録できない" do
-    #   end
-    #   it "prefecture_id(発送元の地域)が空だと登録できない" do
-    #   end     
-    #   it "shipping_id(発送までの日数), price(価格)が空だと登録できない" do
-    #   end
-    #   it "price(価格)が空だと登録できない" do
-    #   end     
-    #   it "name(商品名)が40文字以上だと登録できない" do
-    #   end
-    #   it "explanation(商品説明)が1000文字以上だと登録できない" do
-    #   end     
-    #   it "price(価格)が￥300以下だと登録ができない" do
-    #   end
-    #   it "price(価格)が￥9,999,999以上だと登録ができない" do
-    #   end
-    # end
+      it "name(商品名)が空だと登録できない" do
+        @item.name = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Name can't be blank")
+      end
+      it "explanation(商品説明)が空だと登録できない" do
+        @item.explanation = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Explanation can't be blank")
+      end     
+      it "category_id(カテゴリ)が空だと登録できない" do
+        @item.category_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it "status_id(商品状態)が空だと登録できない" do
+        @item.status_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status can't be blank")
+      end     
+      it "responsibility_id(配送料の負担)が空だと登録できない" do
+        @item.responsibility_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Responsibility can't be blank")
+      end
+      it "prefecture_id(発送元の地域)が空だと登録できない" do
+        @item.prefecture_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it "shipping_id(発送までの日数), price(価格)が空だと登録できない" do
+        @item.shipping_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping can't be blank")
+      end
+      it "price(価格)が空だと登録できない" do
+        @item.price = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price can't be blank")
+      end
+      it "name(商品名)が41文字以上だと登録できない" do
+        @item.name = "a"*41
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+      end
+      it "explanation(商品説明)が1001文字以上だと登録できない" do
+        @item.explanation = "a"*1001
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Explanation is too long (maximum is 1000 characters)")
+      end
+      it "price(価格)が￥299以下だと登録ができない" do
+        @item.price = 299
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+      it "price(価格)が￥10,000,000以上だと登録ができない" do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+    end
   end
 end
