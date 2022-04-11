@@ -20,6 +20,7 @@ RSpec.describe User, type: :model do
         @user.valid? # valid?はバリデーションを実行させてエラーがあるかどうかを判断するメソッドです。
         expect(@user.errors.full_messages).to include("Nickname can't be blank") # include内には想定されるエラーメッセージを記載する
       end
+      
       # emailのテストコード
       it 'emailが空では登録できない' do
         @user.email = ''
@@ -38,6 +39,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email is invalid")
       end
+
       # passwordのテストコード
       it 'passwordが空では登録できない' do
         @user.password = ''
