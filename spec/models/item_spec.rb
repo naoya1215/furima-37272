@@ -43,28 +43,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end     
-      it "category_id(カテゴリ)が空だと登録できない" do
-        @item.category_id = ''
+      it "category_id(カテゴリ)が未選択だと登録できない" do
+        @item.category_id = '---'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      it "status_id(商品状態)が空だと登録できない" do
-        @item.status_id = ''
+      it "status_id(商品状態)が未選択だと登録できない" do
+        @item.status_id = '---'
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end     
-      it "responsibility_id(配送料の負担)が空だと登録できない" do
-        @item.responsibility_id = ''
+      it "responsibility_id(配送料の負担)が未選択だと登録できない" do
+        @item.responsibility_id = '---'
         @item.valid?
         expect(@item.errors.full_messages).to include("Responsibility can't be blank")
       end
-      it "prefecture_id(発送元の地域)が空だと登録できない" do
-        @item.prefecture_id = ''
+      it "prefecture_id(発送元の地域)が未選択だと登録できない" do
+        @item.prefecture_id = '---'
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it "shipping_id(発送までの日数), price(価格)が空だと登録できない" do
-        @item.shipping_id = ''
+      it "shipping_id(発送までの日数), price(価格)が未選択だと登録できない" do
+        @item.shipping_id = '---'
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping can't be blank")
       end
