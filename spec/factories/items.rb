@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    image {Faker::Lorem.sentence}
     name {Faker::Lorem.sentence}
     explanation {Faker::Lorem.sentence}
     category_id {2}
