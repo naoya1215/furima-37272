@@ -73,6 +73,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
+      it "半角英数字以外が含まれていると登録できない" do
+        @item.price = '３00'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
       it "name(商品名)が41文字以上だと登録できない" do
         @item.name = "a"*41
         @item.valid?
