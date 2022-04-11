@@ -6,6 +6,7 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品投稿機能' do
+    # 正常系テスト
     context "商品登録が出来る場合" do
       it "image(画像), name(商品名), explanation(商品説明), category_id(カテゴリ), status_id(商品状態),responsibility_id(配送料の負担), prefecture_id(発送元の地域), shipping_id(発送までの日数), price(価格)が存在すれば登録ができる" do
         expect(@item).to be_valid
@@ -27,6 +28,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
+    # 異常系テスト
     context "商品登録ができない場合" do
       it "image(画像)が空だと登録できない" do
         @item.image = nil #画像の場合はnilを使用する
