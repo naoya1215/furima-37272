@@ -6,8 +6,7 @@ class Shipping < ActiveHash::Base
     { id: 4, name: '4〜7日で発送' }
   ]
 
-    # include ActiveHash::Associationsと記述してmoduleを取り込みます。
-    include ActiveHash::Associations
-    has_many :items
-    
+  # include ActiveHash::Associationsと記述してmoduleを取り込みます。
+  include ActiveHash::Associations
+  has_many :items
 end
