@@ -15,5 +15,4 @@ class Category < ActiveHash::Base
   # include ActiveHash::Associationsと記述してmoduleを取り込みます。
   include ActiveHash::Associations
   has_many :items
-
 end

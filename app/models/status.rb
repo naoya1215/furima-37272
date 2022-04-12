@@ -9,8 +9,7 @@ class Status < ActiveHash::Base
     { id: 7, name: '全体的に状態が悪い' }
   ]
 
-    # include ActiveHash::Associationsと記述してmoduleを取り込みます。
-    include ActiveHash::Associations
-    has_many :items
-    
+  # include ActiveHash::Associationsと記述してmoduleを取り込みます。
+  include ActiveHash::Associations
+  has_many :items
 end

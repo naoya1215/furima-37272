@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
         @user.valid? # valid?はバリデーションを実行させてエラーがあるかどうかを判断するメソッドです。
         expect(@user.errors.full_messages).to include("Nickname can't be blank") # include内には想定されるエラーメッセージを記載する
       end
-      
+
       # emailのテストコード
       it 'emailが空では登録できない' do
         @user.email = ''
@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
       it 'emailに@を含まない場合は登録できない' do
         @user.email = 'hogehoge'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       # passwordのテストコード
@@ -77,9 +77,9 @@ RSpec.describe User, type: :model do
       it 'first_nameは半角を含んでいる場合は登録できない' do
         @user.first_name = '柳沢1'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
-      
+
       # last_nameのテストコード
       it 'last_nameが空では登録できない' do
         @user.last_name = ''
@@ -89,7 +89,7 @@ RSpec.describe User, type: :model do
       it 'last_nameは半角を含んでいる場合は登録できない' do
         @user.last_name = '直也1'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name is invalid")
+        expect(@user.errors.full_messages).to include('Last name is invalid')
       end
 
       # first_name_kanaのテストコード
@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
       it 'first_name_kanaは半角を含んでいる場合は登録できない' do
         @user.first_name_kana = 'ヤナギサワ1'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana is invalid")
+        expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
 
       # last_name_kanaのテストコード

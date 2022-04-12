@@ -5,8 +5,7 @@ class Responsibility < ActiveHash::Base
     { id: 3, name: '送料込み(出品者負担)' }
   ]
 
-    # include ActiveHash::Associationsと記述してmoduleを取り込みます。
-    include ActiveHash::Associations
-    has_many :items
-    
+  # include ActiveHash::Associationsと記述してmoduleを取り込みます。
+  include ActiveHash::Associations
+  has_many :items
 end

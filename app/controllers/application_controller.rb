@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :basic_auth #Basic認証
+  before_action :basic_auth # Basic認証
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
