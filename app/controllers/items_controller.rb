@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index #トップ画面の表示
-    # @items = Item.all
+    @items = Item.all.order(created_at: :desc)
   end
 
   def new #新規作成
