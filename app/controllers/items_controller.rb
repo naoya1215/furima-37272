@@ -31,8 +31,15 @@ class ItemsController < ApplicationController
 
   def update #更新処理
     item = Item.find(params[:id])
-    item.update(item_params)
-    redirect_to item_path
+    # 変更があった場合の処理
+    if item.update(item_params)
+      #redirect_to(ルーティング→コントローラ→ビュー)、情報が更新されているのでぐるっとしているイメージ？
+      redirect_to item_path
+    # 変更がなかった場合の処理
+    else
+      #render(ビューに直接)
+      render :edit 
+    end
   end
 
   private
