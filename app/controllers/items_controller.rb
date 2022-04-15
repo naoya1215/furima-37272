@@ -24,6 +24,17 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit #編集ページへ
+    # new.html.erbからクリックされた情報をパラメータとして受け取り、edit.html.erbで編集ページを表示
+    @item = Item.find(params[:id])
+  end
+
+  def update #更新処理
+    item = Item.find(params[:id])
+    item.update(item_params)
+    redirect_to item_path
+  end
+
   private
 
   def item_params
