@@ -19,7 +19,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
+  def show # 詳細ページへ
+    # index.html.erbからクリックされた情報をパラメータとして受け取り、show.html.erbで詳細情報を表示
     @item = Item.find(params[:id])
   end
 
