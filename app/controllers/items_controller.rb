@@ -27,6 +27,10 @@ class ItemsController < ApplicationController
   def edit #編集ページへ
     # new.html.erbからクリックされた情報をパラメータとして受け取り、edit.html.erbで編集ページを表示
     @item = Item.find(params[:id])
+    # 商品出品者以外が編集画面にアクセスしようとするとトップページに遷移される
+    unless current_user.id == @item.user_id
+      redirect_to root_path 
+    end
   end
 
   def update #更新処理
@@ -48,4 +52,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :explanation, :category_id, :status_id, :responsibility_id, :prefecture_id, :shipping_id,
                                  :price, :image).merge(user_id: current_user.id)
   end
+
 end
