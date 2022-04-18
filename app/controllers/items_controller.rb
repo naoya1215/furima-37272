@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   # exceptを使用(index, showは除きユーザーがログインしているかを確認する)
+  # ログインをしていない場合は、ログインページに遷移される
   before_action :authenticate_user!, except: [:index, :show]
 
   def index # トップ画面の表示
@@ -34,15 +35,16 @@ class ItemsController < ApplicationController
   end
 
   def update #更新処理
-    item = Item.find(params[:id])
+    # error_messages.html.erbでmodelオプションを使用しているため、@item(インスタンス変数)を使用する必要がある
+    @item = Item.find(params[:id])
     # 変更があった場合の処理
-    if item.update(item_params)
+    if @item.update(item_params)
       #redirect_to(ルーティング→コントローラ→ビュー)、情報が更新されているのでぐるっとしているイメージ？
       redirect_to item_path
     # 変更がなかった場合の処理
     else
       #render(ビューに直接)
-      render :edit 
+      render :edit
     end
   end
 
