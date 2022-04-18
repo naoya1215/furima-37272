@@ -10,9 +10,8 @@ app/assets/stylesheets/items/new.css %>
     <%# 中身が入った状態で@itemが渡されている %>
     <%= form_with model:@item, local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%# エラー発生時のメッセージ表示%>
     <%= render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 商品画像 %>
     <div class="img-upload">
@@ -28,6 +27,7 @@ app/assets/stylesheets/items/new.css %>
       </div>
     </div>
     <%# /商品画像 %>
+
     <%# 商品名と商品説明 %>
     <div class="new-items">
       <div class="weight-bold-text">
@@ -139,14 +139,17 @@ app/assets/stylesheets/items/new.css %>
       </p>
     </div>
     <%# /注意書き %>
+    
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
       <%# item_pathでshow.html.erbに移動、編集中であっても更新されることはない %>
       <%=link_to 'もどる', item_path, class:"back-btn" %>
     </div>
+    <%# /下部ボタン %>
   </div>
   <% end %>
+ 
 
   <footer class="items-sell-footer">
     <ul class="menu">
