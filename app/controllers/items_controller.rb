@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   # exceptを使用(index, showは除きユーザーがログインしているかを確認する)
   # ログインをしていない場合は、ログインページに遷移される
   before_action :authenticate_user!, except: [:index, :show]
+  # onlyを使用(show, edit, update, destroy)のアクションが実行される時はprivateのset_prototypeが実行
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index # トップ画面の表示
