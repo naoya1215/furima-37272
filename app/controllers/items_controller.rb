@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   def create # 保存
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path 
+      redirect_to root_path
     else
       render :new
     end
@@ -48,12 +48,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy #出品商品の削除
+  def destroy # 出品商品の削除
     # @item = Item.find(params[:id]) #リファクタリング
-    if current_user.id == @item.user_id
-      @item.destroy
-      redirect_to root_path
-    end
+    @item.destroy if current_user.id == @item.user_id
+    redirect_to root_path
   end
 
   private
