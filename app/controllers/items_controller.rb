@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # exceptを使用(index, showは除きユーザーがログインしているかを確認する)
   # ログインをしていない場合は、ログインページに遷移される
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_prototype, only: [:show, :edit, :update]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index # トップ画面の表示
     @items = Item.all.order(created_at: :desc)
@@ -49,9 +49,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy #出品商品の削除
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    # @item = Item.find(params[:id]) #リファクタリング
+    if current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path
+    end
   end
 
   private
