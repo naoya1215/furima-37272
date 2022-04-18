@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   def create # 保存
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to root_path 
     else
       render :new
     end
@@ -26,26 +26,24 @@ class ItemsController < ApplicationController
     # @item = Item.find(params[:id]) #リファクタリング
   end
 
-  def edit #編集ページへ
+  def edit # 編集ページへ
     # new.html.erbからクリックされた情報をパラメータとして受け取り、edit.html.erbで編集ページを表示
     # @item = Item.find(params[:id]) #リファクタリング
     # 商品出品者以外が編集画面にアクセスしようとするとトップページに遷移される
-    unless current_user.id == @item.user_id
-      redirect_to root_path 
-    end
+    redirect_to root_path unless current_user.id == @item.user_id
   end
 
-  def update #更新処理
+  def update # 更新処理
     # error_messages.html.erbでmodelオプションを使用しているため、@item(インスタンス変数)を使用する必要がある
     # @item = Item.find(params[:id]) #リファクタリング
-    
+
     # 変更があった場合の処理
     if @item.update(item_params)
-      #redirect_to(ルーティング→コントローラ→ビュー)、情報が更新されているのでぐるっとしているイメージ？
+      # redirect_to(ルーティング→コントローラ→ビュー)、情報が更新されているのでぐるっとしているイメージ？
       redirect_to item_path
     # 変更がなかった場合の処理
     else
-      #render(ビューに直接)
+      # render(ビューに直接)
       render :edit
     end
   end
@@ -60,5 +58,4 @@ class ItemsController < ApplicationController
   def set_prototype
     @item = Item.find(params[:id])
   end
-
 end
