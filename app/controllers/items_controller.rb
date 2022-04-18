@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy #出品商品の削除
     item = Item.find(params[:id])
     item.destroy
     redirect_to root_path
