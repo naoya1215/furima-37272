@@ -21,4 +21,6 @@ class Prefecture < ActiveHash::Base
   # include ActiveHash::Associationsと記述してmoduleを取り込みます。
   include ActiveHash::Associations
   has_many :items
+  has_many :destinations
+  has_many :order_destination
 end
