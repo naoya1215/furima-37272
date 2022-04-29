@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show]
   def index
     # 商品情報を表示するためのインスタンス
     @item = Item.find(params[:item_id])
-    # 
+    # 自らの出品商品を購入できない
     if current_user.id == @item.user_id
       redirect_to root_path 
     end
