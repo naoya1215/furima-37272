@@ -9,7 +9,7 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <% if @item.present?%>
+      <% if @item.order.present?%>
         <div class="sold-out">
           <span>Sold Out!!</span>
         </div>
@@ -34,8 +34,10 @@
         <p class="or-text">or</p>
         <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy"%>
       <%# 出品者情報が一致していない場合 %>
-      <% else %>
-      <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
+      <% elsif (current_user.id != @item.user_id) && (@item.order.present?)%>
+        <%= link_to "購入画面に進む", root_path ,class:"item-red-btn"%>
+      <% elsif current_user.id != @item.user_id %>
+        <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end%>
 
