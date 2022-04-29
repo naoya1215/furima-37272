@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   def index
     # 商品情報を表示するためのインスタンス
     @item = Item.find(params[:item_id])
+    # 
+    if current_user.id == @item.user_id
+      redirect_to root_path 
+    end
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入
     @order_destination = OrderDestination.new
   end
