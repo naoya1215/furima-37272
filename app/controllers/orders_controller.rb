@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     # 商品情報を表示するためのインスタンス
     @item = Item.find(params[:item_id])
     # 自らの出品商品を購入できない
-    if current_user.id == @item.user_id
+    if (current_user.id == @item.user_id) || (@item.order.present?)
       redirect_to root_path 
     end
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入
