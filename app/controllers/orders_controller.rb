@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @order_destination = OrderDestination.new(order_params)
     if @order_destination.valid?
       # 決算処理
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"] #環境変数を呼び込むようにした為、15行目の記述は削除
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"] #環境変数を呼び込むようにした為
       Payjp::Charge.create(
         amount: @item.price,  # 商品の値段
         card: order_params[:token],    # カードトークン
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
   end
 
   def set_prototype
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 
 end
