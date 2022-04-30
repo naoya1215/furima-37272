@@ -52,8 +52,18 @@ RSpec.describe OrderDestination, type: :model do
         @order_destination.valid?
         expect(@order_destination.errors.full_messages).to include("Phone can't be blank")
       end
-      it 'phone(電話番号)が10桁以上11桁以内の半角数値のみでないと保存できないこと' do
+      it 'phone(電話番号)が9桁以下では保存ができないこと' do
         @order_destination.phone = '123456789'
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("Phone is invalid")
+      end
+      it 'phone(電話番号)が12桁以上では保存ができないこと' do
+        @order_destination.phone = '123456789012'
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("Phone is invalid")
+      end
+      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+        @order_destination.phone = '１２３４５６７８９０'
         @order_destination.valid?
         expect(@order_destination.errors.full_messages).to include("Phone is invalid")
       end
@@ -61,6 +71,16 @@ RSpec.describe OrderDestination, type: :model do
         @order_destination.token = nil
         @order_destination.valid?
         expect(@order_destination.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'userが紐付いていなければ購入できない' do
+        @order_destination.user_id = nil
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("User can't be blank")
+      end
+      it 'itemが紐付いていなければ購入できない' do
+        @order_destination.item_id = nil
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
