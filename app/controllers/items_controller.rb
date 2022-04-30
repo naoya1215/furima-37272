@@ -32,6 +32,9 @@ class ItemsController < ApplicationController
     # @item = Item.find(params[:id]) #リファクタリング
     # 商品出品者以外が編集画面にアクセスしようとするとトップページに遷移される
     redirect_to root_path unless current_user.id == @item.user_id
+    if (current_user.id == @item.user_id) && (@item.order.present?)
+      redirect_to root_path 
+    end
   end
 
   def update # 更新処理

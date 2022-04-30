@@ -1,7 +1,9 @@
 class Item < ApplicationRecord
   # アソシエーション(関連付け)
   belongs_to :user
+  has_one :order
   has_one_attached :image
+
 
   # extend ActiveHash::Associations::ActiveRecordExtensionsと記述してmoduleを取り込む
   extend ActiveHash::Associations::ActiveRecordExtensions
