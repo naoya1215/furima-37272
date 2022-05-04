@@ -22,7 +22,7 @@ class Item < ApplicationRecord
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   # ジャンルの選択が「---」の時は保存できないようにする
   validates :category_id, :status_id, :responsibility_id, :prefecture_id, :shipping_id,
-            numericality: { other_than: 1, message: "can't be blank" }
+            numericality: { other_than: 1, message: "を入力してください" }
 
   # パスワードは、半角英数字混合での入力が必須であること
   # PRICE_REGEX = /\A[0-9]+\z/.freeze
