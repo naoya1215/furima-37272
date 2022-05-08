@@ -32,7 +32,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 # エラーメッセージは英語で出力
-I18n.locale = 'en'
+# I18n.locale = 'en'
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
